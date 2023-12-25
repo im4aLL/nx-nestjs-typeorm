@@ -1,5 +1,25 @@
 ### global
 @baseUrl = http://localhost:3000/api
 
-### api
-GET {{baseUrl}}
+### todo
+GET {{baseUrl}}/todo
+
+### create new todo
+POST {{baseUrl}}/todo
+
+{
+  "name": "Buy milk"
+}
+
+### get a todo
+GET {{baseUrl}}/todo/1
+
+### update a todo
+PATCH {{baseUrl}}/todo/1
+
+{
+  "name": "Buy 3% milk"
+}
+
+### delete a todo
+DELETE {{baseUrl}}/todo/1

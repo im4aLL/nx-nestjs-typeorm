@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-nestjs-typeorm/shared": ["src/libs/shared/src/index.ts"],
       "@nx-nestjs-typeorm/todo": ["src/libs/todo/src/index.ts"]
     }
   },
