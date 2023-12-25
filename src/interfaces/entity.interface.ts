@@ -1,4 +1,4 @@
-export interface Entity<T> {
+export interface IEntity<T> {
   findAll(): T[];
 
   findOne(id: number): T;

@@ -23,3 +23,16 @@ PATCH {{baseUrl}}/todo/1
 
 ### delete a todo
 DELETE {{baseUrl}}/todo/1
+
+
+## auth
+
+### sign up
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Hadi",
+  "email": "me2@habibhadi.com",
+  "password": "123456"
+}

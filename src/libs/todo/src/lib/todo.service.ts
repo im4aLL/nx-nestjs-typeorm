@@ -1,23 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@nestjs/common';
-import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
-import { Todo } from './entities/todo.entity';
+import { CreateTodoDto } from './dtos/create-todo.dto';
+import { UpdateTodoDto } from './dtos/update-todo.dto';
+import { helperTestFn } from '@nx-nestjs-typeorm/utils';
 
 @Injectable()
 export class TodoService {
-  constructor(private todo: Todo) {}
-
   create(createTodoDto: CreateTodoDto) {
     return 'This action adds a new todo';
   }
 
   findAll() {
-    return this.todo.findAll();
+    return 'all';
   }
 
   findOne(id: number) {
-    return this.todo.findOne(id);
+    helperTestFn();
+    return 'all';
   }
 
   update(id: number, updateTodoDto: UpdateTodoDto) {
@@ -25,6 +24,6 @@ export class TodoService {
   }
 
   remove(id: number) {
-    return this.todo.remove(id);
+    return 'remove';
   }
 }

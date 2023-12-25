@@ -14,9 +14,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strictPropertyInitialization": false,
     "paths": {
-      "@nx-nestjs-typeorm/shared": ["src/libs/shared/src/index.ts"],
-      "@nx-nestjs-typeorm/todo": ["src/libs/todo/src/index.ts"]
+      "@nx-nestjs-typeorm/auth": ["src/libs/shared/auth/src/index.ts"],
+      "@nx-nestjs-typeorm/interfaces": ["src/interfaces/index.ts"],
+      "@nx-nestjs-typeorm/todo": ["src/libs/todo/src/index.ts"],
+      "@nx-nestjs-typeorm/user": ["src/libs/shared/user/src/index.ts"],
+      "@nx-nestjs-typeorm/utils": ["src/utils/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
