@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from '@nx-nestjs-typeorm/auth';
+import { FiltersModule } from '@nx-nestjs-typeorm/filters';
 import { Todo, TodoModule } from '@nx-nestjs-typeorm/todo';
 import { User, UserModule } from '@nx-nestjs-typeorm/user';
 
@@ -16,6 +17,7 @@ import { User, UserModule } from '@nx-nestjs-typeorm/user';
       entities: [User, Todo],
       synchronize: true,
     }),
+    FiltersModule,
     TodoModule,
     UserModule,
     AuthModule,

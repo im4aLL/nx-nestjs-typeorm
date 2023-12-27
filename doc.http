@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 
 ### get a user
-GET {{baseUrl}}/user/cfbb8f6a-91a1-4800-9223-51b1bd6230881
+GET {{baseUrl}}/user/cfbb8f6a-91a1-4800-9223-51b1bd623088
 
 ### find users by email
 GET {{baseUrl}}/user/search?email=me@habibhadi.com

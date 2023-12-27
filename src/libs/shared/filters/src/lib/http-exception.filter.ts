@@ -1,8 +1,7 @@
 import {
-  ExceptionFilter,
-  Catch,
   ArgumentsHost,
-  HttpException,
+  Catch,
+  ExceptionFilter,
   HttpStatus,
 } from '@nestjs/common';
 import { AlreadyExistsError, NotFoundError } from '@nx-nestjs-typeorm/errors';
@@ -10,7 +9,7 @@ import { Request, Response } from 'express';
 
 @Catch(Error)
 export class HttpExceptionFilter implements ExceptionFilter {
-  catch(exception: HttpException, host: ArgumentsHost) {
+  catch(exception: Error, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();

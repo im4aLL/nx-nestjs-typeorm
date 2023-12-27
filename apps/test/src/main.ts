@@ -5,7 +5,6 @@
 
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { HttpExceptionFilter } from '@nx-nestjs-typeorm/exceptions';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
@@ -17,9 +16,6 @@ async function bootstrap() {
       whitelist: true,
     })
   );
-
-  // exception filter
-  app.useGlobalFilters(new HttpExceptionFilter());
 
   // global prefix
   const globalPrefix = 'api';
