@@ -1,39 +1,37 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Injectable,
-} from '@nestjs/common';
-import { SignupDto } from './dtos';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@nx-nestjs-typeorm/user';
-import { QueryFailedError, Repository } from 'typeorm';
+import { User, UserService } from '@nx-nestjs-typeorm/user';
 import * as argon2 from 'argon2';
+import { Repository } from 'typeorm';
+import { SignupDto } from './dtos';
+import { AlreadyExistsError } from '@nx-nestjs-typeorm/errors';
 import { AUTH_CONST } from './auth.constant';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>
+    @InjectRepository(User) private userRepository: Repository<User>,
+    private userService: UserService
   ) {}
 
-  async signup(signupDto: SignupDto) {
-    if (await this.isUserExists(signupDto.email)) {
-      throw new ConflictException(AUTH_CONST.messages.userAlreadyExists);
+  /**
+   * Create new user
+   *
+   * @param signupDto SignupDto
+   * @returns Promise<User | void>
+   */
+  async signup(signupDto: SignupDto): Promise<User | null> {
+    const isUserExists = !!(await this.userService.findOneByEmail(
+      signupDto.email
+    ));
+
+    if (isUserExists) {
+      throw new AlreadyExistsError(AUTH_CONST.messages.userAlreadyExists);
     }
 
     const hash = await argon2.hash(signupDto.password);
     const user = this.userRepository.create({ ...signupDto, password: hash });
 
-    return this.userRepository.save(user).catch((error) => {
-      if (error instanceof QueryFailedError) {
-        throw new BadRequestException(error.message);
-      }
-    });
-  }
-
-  private async isUserExists(email: string): Promise<boolean> {
-    const user = await this.userRepository.findOne({ where: { email } });
-
-    return !!user;
+    return await this.userRepository.save(user);
   }
 }

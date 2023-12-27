@@ -33,6 +33,25 @@ Content-Type: application/json
 
 {
   "name": "Hadi",
-  "email": "me2@habibhadi.com",
+  "email": "me3@habibhadi.com",
   "password": "123456"
 }
+
+## user
+
+### update a user
+PATCH {{baseUrl}}/user/f11989c6-d7d7-4f4d-9b62-008f57f3c4ba
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### get a user
+GET {{baseUrl}}/user/cfbb8f6a-91a1-4800-9223-51b1bd6230881
+
+### find users by email
+GET {{baseUrl}}/user/search?email=me@habibhadi.com
+
+### delete user
+DELETE {{baseUrl}}/user/7dc3d965-ef5e-47b5-860a-e99ddbaf53a1
