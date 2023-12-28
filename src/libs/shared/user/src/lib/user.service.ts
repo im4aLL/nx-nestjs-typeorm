@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { User } from './entities';
+import { User } from '@nx-nestjs-typeorm/entities';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NotFoundError } from '@nx-nestjs-typeorm/errors';
 import { USER_CONST } from './user.constant';

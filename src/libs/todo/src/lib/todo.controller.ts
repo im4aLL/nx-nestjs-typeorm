@@ -6,22 +6,31 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto, UpdateTodoDto } from './dtos';
+import { Serialize } from '@nx-nestjs-typeorm/decorators';
+import { TodoDto } from './dtos/todo.dto';
 
 @Controller('todo')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   @Post()
-  create(@Body() createTodoDto: CreateTodoDto) {
-    return this.todoService.create(createTodoDto);
+  @Serialize(TodoDto)
+  create(@Body() createTodoDto: CreateTodoDto, @Body('userId') userId: string) {
+    return this.todoService.create(createTodoDto, userId);
   }
 
   @Get()
   findAll() {
     return this.todoService.findAll();
+  }
+
+  @Get('raw')
+  testRaw(@Query('q') q: string) {
+    return this.todoService.testRaw(q);
   }
 
   @Get(':id')

@@ -1,5 +1,5 @@
-import { User } from '@nx-nestjs-typeorm/user';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, ManyToOne, Entity } from 'typeorm';
+import { User } from '../shared';
 
 @Entity()
 export class Todo {
@@ -12,6 +12,6 @@ export class Todo {
   @Column({ default: false })
   isCompleted: boolean;
 
-  @ManyToOne(() => User, (user) => user.todos)
+  @ManyToOne(() => User, (user) => user.todos) // { eager: true }
   user: User;
 }

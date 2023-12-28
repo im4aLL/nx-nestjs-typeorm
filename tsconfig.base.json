@@ -27,7 +27,8 @@
       "@nx-nestjs-typeorm/interfaces": ["src/interfaces/index.ts"],
       "@nx-nestjs-typeorm/todo": ["src/libs/todo/src/index.ts"],
       "@nx-nestjs-typeorm/user": ["src/libs/shared/user/src/index.ts"],
-      "@nx-nestjs-typeorm/utils": ["src/utils/index.ts"]
+      "@nx-nestjs-typeorm/utils": ["src/utils/index.ts"],
+      "@nx-nestjs-typeorm/entities": ["src/entities/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

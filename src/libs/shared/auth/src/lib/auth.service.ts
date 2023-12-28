@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User, UserService } from '@nx-nestjs-typeorm/user';
+import { UserService } from '@nx-nestjs-typeorm/user';
 import * as argon2 from 'argon2';
 import { Repository } from 'typeorm';
 import { SignupDto } from './dtos';
 import { AlreadyExistsError } from '@nx-nestjs-typeorm/errors';
 import { AUTH_CONST } from './auth.constant';
+import { User } from '@nx-nestjs-typeorm/entities';
 
 @Injectable()
 export class AuthService {

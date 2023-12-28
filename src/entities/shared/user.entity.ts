@@ -1,5 +1,5 @@
-import { Todo } from '@nx-nestjs-typeorm/todo';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Todo } from '../todo';
 
 @Entity()
 export class User {

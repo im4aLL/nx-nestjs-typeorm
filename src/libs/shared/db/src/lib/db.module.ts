@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Todo } from '@nx-nestjs-typeorm/todo';
-import { User } from '@nx-nestjs-typeorm/user';
+import { Todo } from '@nx-nestjs-typeorm/entities';
+import { User } from '@nx-nestjs-typeorm/entities';
 
 @Module({
   imports: [
@@ -18,6 +18,7 @@ import { User } from '@nx-nestjs-typeorm/user';
           port: configService.get<number>('DB_PORT'),
           entities: [User, Todo],
           synchronize: true,
+          // logging: true,
         };
       },
     }),
