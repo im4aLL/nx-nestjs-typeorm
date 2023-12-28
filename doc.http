@@ -6,23 +6,25 @@ GET {{baseUrl}}/todo
 
 ### create new todo
 POST {{baseUrl}}/todo
+Content-Type: application/json
 
 {
-  "name": "Buy milk"
+  "name": "Buy Guitar"
 }
 
 ### get a todo
-GET {{baseUrl}}/todo/1
+GET {{baseUrl}}/todo/3bb54d4c-0aa2-488b-937c-83d41b897ee5
 
 ### update a todo
-PATCH {{baseUrl}}/todo/1
+PATCH {{baseUrl}}/todo/3bb54d4c-0aa2-488b-937c-83d41b897ee5
+Content-Type: application/json
 
 {
-  "name": "Buy 3% milk"
+  "isCompleted": true
 }
 
 ### delete a todo
-DELETE {{baseUrl}}/todo/1
+DELETE {{baseUrl}}/todo/903e8e63-08bc-488e-a3b2-56483a07bb28
 
 
 ## auth

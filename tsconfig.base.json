@@ -17,6 +17,8 @@
     "strictPropertyInitialization": false,
     "paths": {
       "@nx-nestjs-typeorm/auth": ["src/libs/shared/auth/src/index.ts"],
+      "@nx-nestjs-typeorm/db": ["src/libs/shared/db/src/index.ts"],
+      "@nx-nestjs-typeorm/decorators": ["src/decorators/index.ts"],
       "@nx-nestjs-typeorm/errors": ["src/errors/index.ts"],
       "@nx-nestjs-typeorm/filters": ["src/libs/shared/filters/src/index.ts"],
       "@nx-nestjs-typeorm/interceptors": [
@@ -25,8 +27,7 @@
       "@nx-nestjs-typeorm/interfaces": ["src/interfaces/index.ts"],
       "@nx-nestjs-typeorm/todo": ["src/libs/todo/src/index.ts"],
       "@nx-nestjs-typeorm/user": ["src/libs/shared/user/src/index.ts"],
-      "@nx-nestjs-typeorm/utils": ["src/utils/index.ts"],
-      "@nx-nestjs-typeorm/decorators": ["src/decorators/index.ts"]
+      "@nx-nestjs-typeorm/utils": ["src/utils/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

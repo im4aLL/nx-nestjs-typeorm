@@ -1,29 +1,50 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { NotFoundError } from '@nx-nestjs-typeorm/errors';
+import { Repository } from 'typeorm';
 import { CreateTodoDto } from './dtos/create-todo.dto';
 import { UpdateTodoDto } from './dtos/update-todo.dto';
-import { helperTestFn } from '@nx-nestjs-typeorm/utils';
+import { Todo } from './entities';
 
 @Injectable()
 export class TodoService {
-  create(createTodoDto: CreateTodoDto) {
-    return 'This action adds a new todo';
+  constructor(
+    @InjectRepository(Todo) private todoRepository: Repository<Todo>
+  ) {}
+
+  async create(createTodoDto: CreateTodoDto) {
+    const item = this.todoRepository.create(createTodoDto);
+
+    return await this.todoRepository.save(item);
   }
 
-  findAll() {
-    return 'all';
+  async findAll() {
+    return await this.todoRepository.find();
   }
 
-  findOne(id: number) {
-    helperTestFn();
-    return 'all';
+  async findOne(id: string) {
+    return await this.todoRepository.findOne({ where: { id } });
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    return `This action updates a #${id} todo`;
+  async update(id: string, updateTodoDto: UpdateTodoDto) {
+    const item = await this.findOne(id);
+
+    if (!item) {
+      throw new NotFoundError();
+    }
+
+    Object.assign(item, updateTodoDto);
+
+    return await this.todoRepository.save(item);
   }
 
-  remove(id: number) {
-    return 'remove';
+  async remove(id: string) {
+    const item = await this.findOne(id);
+
+    if (!item) {
+      throw new NotFoundError();
+    }
+
+    return await this.todoRepository.remove(item);
   }
 }
