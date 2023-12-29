@@ -17,7 +17,7 @@ import { User } from '@nx-nestjs-typeorm/entities';
           password: configService.get<string>('DB_PASSWORD'),
           port: configService.get<number>('DB_PORT'),
           entities: [User, Todo],
-          synchronize: true,
+          synchronize: false, // NEVER SET IT TRUE
           // logging: true,
         };
       },

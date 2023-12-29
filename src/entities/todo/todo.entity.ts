@@ -12,6 +12,8 @@ export class Todo {
   @Column({ default: false })
   isCompleted: boolean;
 
-  @ManyToOne(() => User, (user) => user.todos) // { eager: true }
+  // { eager: true }
+  // if eager set to true, it will load associated user along with todo data
+  @ManyToOne(() => User, (user) => user.todos)
   user: User;
 }
