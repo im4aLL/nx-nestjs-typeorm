@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "typeorm": "typeorm-ts-node-esm"
+    "typeorm": "typeorm-ts-node-esm",
+    "typeorm:test:run-migration": "npm run typeorm migration:run -- -d typeorm/test/config.ts",
+    "typeorm:test:create-migration": "npm run typeorm migration:create typeorm/test/migrations/$npm_config_name",
+    "typeorm:generate:clean": "rimraf ./temp",
+    "typeorm-build-config": "tsc --experimentalDecorators --emitDecoratorMetadata typeorm/test/config.ts --outDir ./temp",
+    "typeorm:test:generate-migration": "npm run typeorm-build-config && typeorm migration:generate -d temp/typeorm/test/config.js typeorm/test/migrations/$npm_config_name && npm run typeorm:generate:clean"
   },
   "private": true,
   "dependencies": {
@@ -17,7 +22,7 @@
     "axios": "^1.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
-    "env-cmd": "^10.1.0",
+    "dotenv": "^16.3.1",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
@@ -50,6 +55,7 @@
     "nx": "17.2.6",
     "prettier": "^2.6.2",
     "react-refresh": "^0.10.0",
+    "rimraf": "^5.0.5",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "~5.2.2",

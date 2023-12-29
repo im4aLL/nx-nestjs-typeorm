@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Todo } from '@nx-nestjs-typeorm/entities';
-import { User } from '@nx-nestjs-typeorm/entities';
+import { Todo, User } from '@nx-nestjs-typeorm/entities';
 
 @Module({
   imports: [
